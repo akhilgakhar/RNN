@@ -33,8 +33,10 @@ class model():
         i=0
         for t in range(self.nLayers):
             # print(i)
+            
             self.hprev = self.layer[t].forward(self.hprev,input[:,t,:],self.Bh,self.Whh,self.Wxh)
             i=i+1
+            
         output = self.hprev.mm(self.Why)
         
         return output,self.hprev
@@ -50,6 +52,7 @@ class model():
             #print(i)
             hp = rec_net.forward(hp,inp[t].view(1,-1),self.Bh,self.Whh,self.Wxh)
             i=i+1
+            
         output = hp.mm(self.Why)
         
         return output
